@@ -6,8 +6,6 @@ import ViewBox from './components/ViewBox';
 const App: React.FC = () => {
   return (
     <>
-      {/*        <Banner /> */}
-
       <ViewBox />
       <div className='stars -z-10'></div>
     </>
