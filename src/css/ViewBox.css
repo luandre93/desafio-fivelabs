@@ -1,3 +1,17 @@
-.bg-gray-333{
-    background-color: #333!important;
+.bg-dark{
+    background-color: #1f1f1f!important;
+}
+
+.border-x-y-0-5 {
+    border-left-width: 0.5px;
+    border-right-width: 0.5px;
+    border-top-width: 0.5px;
+    border-bottom-width: 0.5px;
+    --tw-divide-opacity: 1;
+    border-color: rgb(55 65 81 / var(--tw-divide-opacity))
+}
+
+.fonte-sf-distant-galaxy{
+    font-family: 'SF Distant Galaxy';
+    font-weight: 0!important;
 }

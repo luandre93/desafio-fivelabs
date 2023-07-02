@@ -1,6 +1,6 @@
 import { observable } from 'mobx'
 
-class Store {
+class CheckoutStore {
     // Informações Pessoais
     @observable nome: string | undefined;
     @observable email: string | undefined;
@@ -17,5 +17,5 @@ class Store {
     @observable cvvCartao: string | undefined;
 }
 
-const store = new Store();
-export default store;
+const checkoutStore = new CheckoutStore();
+export default checkoutStore;

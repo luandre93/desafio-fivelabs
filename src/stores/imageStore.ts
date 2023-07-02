@@ -24,5 +24,5 @@ class ImagesStore {
         image10
     ];
 }
-const imagensStore = new ImagesStore();
-export default imagensStore;
+const imagesStore = new ImagesStore();
+export default imagesStore;
