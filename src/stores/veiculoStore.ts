@@ -1,10 +1,10 @@
 import { makeAutoObservable } from "mobx";
 import axios from "axios";
 import ImageStore from "./imageStore";
-import { Veiculo } from "../interfaces/Veiculo";
+import { IVeiculo } from "../interfaces/Veiculo";
 
 class VeiculoStore {
-    listaVeiculos: Veiculo[] = [];
+    listaVeiculos: IVeiculo[] = [];
 
     constructor() {
         makeAutoObservable(this);
@@ -14,8 +14,8 @@ class VeiculoStore {
         try {
             const { imagens } = ImageStore;
             const response = await axios.get("https://swapi.dev/api/vehicles/?format=json");
-            const lista: Veiculo[] = response.data.results;
-            lista.forEach((item: Veiculo, index: number) => {
+            const lista: IVeiculo[] = response.data.results;
+            lista.forEach((item: IVeiculo, index: number) => {
                 item.image = imagens[index];
                 item.id = index;
             });
