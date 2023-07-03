@@ -1,17 +1,19 @@
 import React from 'react';
+import { IVeiculo } from "../interfaces/Veiculo";
 import { Link } from 'react-router-dom';
-import { Veiculo } from "../interfaces/Veiculo";
-
+import checkoutStore from "../stores/checkoutStore"
 interface Props {
-    veiculo: Veiculo;
+    botaoFalse?: boolean;
+    veiculo: IVeiculo;
 }
 
-const Produto: React.FC<Props> = ({ veiculo }) => {
+const Produto: React.FC<Props> = ({ veiculo, botaoFalse }) => {
+
     return (
         <>
             <div className="m-4 block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700" key={veiculo.id}>
                 <a href="#!">
-                    <img className="sm:h-64 sm:w-96 rounded-t-lg" src={veiculo.image} alt="" />
+                    <img className="sm:h-64 sm:w-96 rounded-t-lg" src={veiculo.image} alt={veiculo.name} />
                 </a>
                 <div className="p-6">
                     <h5
@@ -23,16 +25,21 @@ const Produto: React.FC<Props> = ({ veiculo }) => {
                         <p className="text-sm font-medium text-gray-900 truncate dark:text-white">Fabricante: {veiculo.manufacturer}</p>
                         <p className="text-sm font-medium text-gray-900 truncate dark:text-white">Carga: {veiculo.cargo_capacity}</p>
                     </div>
-                    <h6 className='text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50'> {veiculo.cost_in_credits == 'unknown' ? '' : "R$ " + veiculo.cost_in_credits}</h6>
+                    <h6 className='text-xl text-center font-medium leading-tight text-neutral-800 dark:text-neutral-50'> {veiculo.cost_in_credits == 'unknown' ? '' : "R$ " + veiculo.cost_in_credits}</h6>
                     <div className='block text-center items-center justify-center text-base font-semibold dark:text-white'>
 
                         {veiculo.cost_in_credits != 'unknown' ?
-                            <button
-                                type="button"
-                                className="mb-2 mt-5 block w-full rounded bg-primary px-6 pb-2 pt-2.5 
+                            !botaoFalse ?
+                                <Link to="/checkout">
+                                    <button
+                                        type="button"
+                                        onClick={() => checkoutStore.adicionarProduto(veiculo.id)}
+                                        className="mb-2 mt-5 block w-full rounded bg-primary px-6 pb-2 pt-2.5 
                                             text-xs font-medium uppercase leading-normal bg-slate-500 text-gray-50 hover:bg-green-600">
-                                <Link to={`/checkout/${veiculo.id}`}> Comprar</Link>
-                            </button>
+                                        Comprar
+                                    </button>
+                                </Link>
+                                : ""
                             :
                             <button
                                 type="button"

@@ -1,4 +1,4 @@
-export interface Veiculo {
+export interface IVeiculo {
     id: number;
     name: string;
     model: string;
